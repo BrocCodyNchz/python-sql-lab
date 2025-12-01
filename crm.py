@@ -63,12 +63,11 @@ def delete_company():
 def add_employee():
     first_name = input("Enter employee first name: ")
     last_name = input("Enter employee last name: ")
-    email = input("Enter employee email: ")
+    position = input("Enter employee position: ")
     company_id = input("Enter company ID for the employee: ")
 
     cursor = connection.cursor()
-    cursor.execute("INSERT INTO employees (first_name, last_name, email, company_id) VALUES (%s, %s, %s, %s)", (first_name, last_name, email, company_id))
-
+    cursor.execute("INSERT INTO employees (first_name, last_name, position, company_id) VALUES (%s, %s, %s, %s)", (first_name, last_name, position, company_id))
     connection.commit()
     cursor.close()
     print("Employee added successfully.")
@@ -83,14 +82,13 @@ def view_employees():
         print(f"ID: {employee[0]}, Name: {employee[1]} {employee[2]}, Email: {employee[3]}, Company ID: {employee[4]}")
 
 def update_employee():
-    employee_id = input("Enter employee ID to update: ")
     first_name = input("Enter new employee first name: ")
     last_name = input("Enter new employee last name: ")
-    email = input("Enter new employee email: ")
+    position = input("Enter new employee position: ")
     company_id = input("Enter new company ID for the employee: ")
 
     cursor = connection.cursor()
-    cursor.execute("UPDATE employees SET first_name=%s, last_name=%s, email=%s, company_id=%s WHERE id=%s", (first_name, last_name, email, company_id, employee_id))
+    cursor.execute("UPDATE employees SET first_name=%s, last_name=%s, position=%s, company_id=%s WHERE id=%s", (first_name, last_name, position, company_id, employee_id))
 
     connection.commit()
     cursor.close()
@@ -131,3 +129,5 @@ while True:
         break
     else:
         print("Invalid option. Please try again.")
+
+connection.close()
