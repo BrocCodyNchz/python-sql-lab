@@ -88,7 +88,7 @@ def update_employee():
     company_id = input("Enter new company ID for the employee: ")
 
     cursor = connection.cursor()
-    cursor.execute("UPDATE employees SET first_name=%s, last_name=%s, position=%s, company_id=%s WHERE id=%s", (first_name, last_name, position, company_id, employee_id))
+    cursor.execute("UPDATE employees SET first_name=%s, last_name=%s, position=%s, company_id=%s WHERE id=%s", (first_name, last_name, position, company_id))
 
     connection.commit()
     cursor.close()
